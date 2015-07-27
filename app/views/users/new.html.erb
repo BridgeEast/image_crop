@@ -2,6 +2,11 @@
 <p>Find me in app/views/users/new.html.erb</p>
 <%= form_for @user, url: {action: :create} do |f| %>
   <%= f.file_field :avatar %>
-  <%= image_tag :avatar if @user.avatar.url.present? %>
+  <p>
+    <label>
+      <%= f.check_box :remove_avatar %>
+      Remove avatar
+    </label>
+  </p>
   <%= f.submit 'Crop' %>
 <% end %>
