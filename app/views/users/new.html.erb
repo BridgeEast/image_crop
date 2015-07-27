@@ -1,0 +1,7 @@
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+<%= form_for @user, url: {action: :create} do |f| %>
+  <%= f.file_field :avatar %>
+  <%= image_tag :avatar if @user.avatar.url.present? %>
+  <%= f.submit 'Crop' %>
+<% end %>
