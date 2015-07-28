@@ -28,7 +28,9 @@ class UsersController < ApplicationController
       if @user.save
         format.html {
           if params[:user][:avatar].present?
-            render :crop  ## Render the view for cropping
+            if @user.update_attributes(avatar_params)
+              redirect_to users_path
+            end  ## Render the view for cropping
           else
             redirect_to @user, notice: 'User was successfully created.'
           end

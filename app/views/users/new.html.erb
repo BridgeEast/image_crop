@@ -2,11 +2,10 @@
 <p>Find me in app/views/users/new.html.erb</p>
 <%= form_for @user, url: {action: :create} do |f| %>
   <%= f.file_field :avatar %>
-  <p>
-    <label>
-      <%= f.check_box :remove_avatar %>
-      Remove avatar
-    </label>
-  </p>
-  <%= f.submit 'Crop' %>
+  <div id="divShow"><img id="user_avatar_cropbox" /></div>
+  <%= f.text_field :avatar_crop_x, id: "user_avatar_crop_x"%>
+  <%= f.text_field :avatar_crop_y, id: "user_avatar_crop_y"%>
+  <%= f.text_field :avatar_crop_w, id: "user_avatar_crop_w"%>
+  <%= f.text_field :avatar_crop_h, id: "user_avatar_crop_h"%>
+  <%= f.submit 'Submit' %>
 <% end %>

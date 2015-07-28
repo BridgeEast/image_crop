@@ -16,7 +16,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process crop: :avatar  ## Crops this version based on original image
+  # process crop: :avatar  ## Crops this version based on original image
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -28,14 +28,23 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
+  # process crop: :avata
+
+  # process resize_to_fit: [512, 1024]
   #
   # def scale(width, height)
   #   # do something
   # end
+  # process crop: :avatar
+  version :thumb do
+    process crop: :avatar  ## Crops this version based on original image
+    resize_to_limit(320,640)
+  end
 
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
+  # process crop: :avata
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.

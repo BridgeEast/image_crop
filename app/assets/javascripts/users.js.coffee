@@ -1,5 +1,8 @@
 jQuery ->
-  new CarrierWaveCropper()
+  preview = new uploadPreview({ UpBtn: "user_avatar", DivShow: "divShow", ImgShow: "user_avatar_cropbox" });
+  $("#user_avatar").change ->
+    if $(this)
+      new CarrierWaveCropper()
 
 class CarrierWaveCropper
   constructor: ->
@@ -22,3 +25,4 @@ class CarrierWaveCropper
       height: Math.round(100/coords.h * $('#user_avatar_cropbox').height()) + 'px'
       marginLeft: '-' + Math.round(100/coords.w * coords.x) + 'px'
       marginTop: '-' + Math.round(100/coords.h * coords.y) + 'px'
+
